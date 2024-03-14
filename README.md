@@ -13,4 +13,4 @@ There are 2 admin commands to help with moderation
 |Name|Parameters|Description|
 |--|--|--|
 |fetchscores|none|Searches a channel for all valid games|
-|removescores|game,user|puzzle|Removes a users puzzle|
+|removescores|game,user,puzzle|Removes a users puzzle|
