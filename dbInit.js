@@ -7,7 +7,10 @@ const sequelize = new Sequelize('database', 'username', 'password', {
 	storage: 'database.sqlite',
 });
 
-require('./models/User.js')(sequelize, Sequelize.DataTypes);
+require('./models/Wordle.js')(sequelize, Sequelize.DataTypes);
+require('./models/Connections.js')(sequelize, Sequelize.DataTypes);
+require('./models/Mini.js')(sequelize, Sequelize.DataTypes);
+require('./models/Strands.js')(sequelize, Sequelize.DataTypes);
 
 const force = process.argv.includes('--force') || process.argv.includes('-f');
 const alter = process.argv.includes('--alter') || process.argv.includes('-a');

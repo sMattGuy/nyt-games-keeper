@@ -5,7 +5,7 @@ async function connection_handler(message){
 	let searchResults = message.content.match(idRegex);
 	const puzzleId = searchResults[0];
 	
-	const checktag = await Connections.findOne({where:{user_id: message.author.id, server_id: message.guild.id, puzzel_id: puzzleId}});
+	const checktag = await Connections.findOne({where:{user_id: message.author.id, server_id: message.guild.id, puzzle_id: puzzleId}});
 	if(checktag){
 		//tag already in system
 		console.log(`connections ${puzzleId} for user ${message.author.id} already recorded`);
@@ -51,7 +51,7 @@ async function connection_handler(message){
 			Connections.create({
 				user_id: message.author.id,
                 server_id: message.guild.id,
-				puzzel_id: puzzleId,
+				puzzle_id: puzzleId,
 				score: score,
 				guesses: guessCount.length,
 				desc: message.content
@@ -65,9 +65,9 @@ async function connection_handler(message){
 }
 async function mini_handler(message){
     const url_params = new URLSearchParams(message.content);
-    const date = url_params.get('d');
+    const date = url_params.get('https://www.nytimes.com/badges/games/mini.html?d');
     const time = url_params.get('t');
-    const checktag = await Wordle.findOne({where:{user_id: message.author.id, server_id: message.guild.id, date: date}});
+    const checktag = await Mini.findOne({where:{user_id: message.author.id, server_id: message.guild.id, date: date}});
 	if(checktag){
 		//tag already in system
 		console.log(`mini ${date} for user ${message.author.id} already recorded`);
@@ -117,7 +117,7 @@ async function strands_handler(message){
 	let searchResults = message.content.match(idRegex);
 	const puzzleId = searchResults[0];
 	
-	const checktag = await Strands.findOne({where:{user_id: message.author.id, server_id: message.guild.id, puzzel_id: puzzleId}});
+	const checktag = await Strands.findOne({where:{user_id: message.author.id, server_id: message.guild.id, puzzle_id: puzzleId}});
 	if(checktag){
 		//tag already in system
 		console.log(`strands ${puzzleId} for user ${message.author.id} already recorded`);
@@ -129,14 +129,17 @@ async function strands_handler(message){
         const score_regex = new RegExp('🔵|🟡')
 
         const theme = message.content.match(theme_regex)
-        const hints = message.content.match(hint_regex)
+        let hints = message.content.match(hint_regex)
         const score = message.content.match(score_regex)
 
 		try{
+            if(!hints){
+                hints = [];
+            }
 			Strands.create({
 				user_id: message.author.id,
                 server_id: message.guild.id,
-				puzzel_id: puzzleId,
+				puzzle_id: puzzleId,
                 theme: theme[0],
 				score: score.length,
 				hints: hints.length
