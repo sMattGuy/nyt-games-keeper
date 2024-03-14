@@ -1,0 +1,24 @@
+{
+  "name": "nyt-games",
+  "version": "1.0.0",
+  "description": "score keeper for all shared nyt games scores",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sMattGuy/nyt-games-keeper.git"
+  },
+  "author": "sMattGuy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sMattGuy/nyt-games-keeper/issues"
+  },
+  "homepage": "https://github.com/sMattGuy/nyt-games-keeper#readme",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "sequelize": "^6.37.1",
+    "sqlite3": "^5.1.7"
+  }
+}
