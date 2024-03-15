@@ -42,7 +42,7 @@ client.on('interactionCreate', async interaction => {
 
 // regex definitions
 const connections_regex = new RegExp('Connections \\nPuzzle #\\d+\\n');
-const wordle_regex = new RegExp('Wordle (\\d+) ([1-6]|X)\\/6');
+const wordle_regex = new RegExp('Wordle (\\d{1,3}(,\\d{3})+).+([1-6]|X)\\/6');
 const mini_regex = new RegExp('www\\.nytimes\\.com\\/badges\\/games\\/mini\\.html');
 const strands_regex = new RegExp('Strands #\\d+');
 

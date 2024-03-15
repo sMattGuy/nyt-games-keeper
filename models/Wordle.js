@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 		},
 		score: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.STRING,
 			allowNull: false,
 		},
 	}, {

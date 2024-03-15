@@ -88,10 +88,8 @@ async function mini_handler(message){
 	}
 }
 async function wordle_handler(message){
-    const splitMessage = message.content.split(" ");
-	const puzzleId = splitMessage[1];
-	let score = splitMessage[2][0];
-	
+	const puzzleId = parseInt(message.content.match(/(\d{1,3}(,\d{3})+)/g)[0].replaceAll(",",""));
+	const score = message.content.match(/([1-6]|X)\/6/g)[0][0]
 	const checktag = await Wordle.findOne({where:{user_id: message.author.id, server_id: message.guild.id, puzzle_id: puzzleId}});
 	if(checktag){
 		//tag already in system
