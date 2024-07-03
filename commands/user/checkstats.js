@@ -22,8 +22,9 @@ module.exports = {
 				.setDescription('The user to check (leave blank for yourself)')
 				.setRequired(false)),
 	async execute(interaction, Tags) {
-		const user_id = interaction.options.getUser('userid') ?? interaction.user.id;
+		let user_id = interaction.options.getUser('userid') ?? interaction.user;
 		const game = interaction.options.getString('game');
+    user_id = user_id.id;
 
 		switch(game){
 			case "wordle":
